@@ -10,17 +10,18 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.use(express.json());
+
 // convirtiendo las peticiones de contenido tipo - application/x-www-form-urlencoded
 app.use(express.urlencoded({extended : true}));
 // convirtiendo las peticiones contenido tipo - aplication/json
-app.use(express.json());
 
 // ruta simple
 app.get('/', (req, res) =>{
     res.json({ message: "My sql api"});
 });
 
-//require("./app/routes/routes.js")(app);
+require("./app/routes/routes.js")(app);
 
 // seteando el puerto, por este valor escuchara las peticiones
 const PORT  = process.env.PORT || 3000;
